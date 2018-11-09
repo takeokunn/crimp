@@ -1,0 +1,2 @@
+class GymLike < ApplicationRecord
+end

@@ -1,0 +1,31 @@
+.top-back {
+    background-color:#C0C0C0;
+}
+.previous-hold-change {
+    @media screen and (max-width:800px){
+        font-size: 8px;
+    }
+}
+.last-hold-change {
+    @media screen and (max-width:800px){
+        font-size: 8px;
+    }
+}
+.f_2_info {
+    @media screen and (max-width:800px){
+        font-size: 12px;
+        .overall_score {
+            font-size: 14px;
+        }
+    }
+}
+.f_3_info {
+    @media screen and (max-width:800px){
+        font-size: 12px;
+    }
+    .quality_of_service {
+    }
+    p {
+        margin-bottom: 0;
+    }
+}

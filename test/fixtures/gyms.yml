@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gym_name: 
+  place: MyText
+  station: 
+  access: MyText
+  open_time: 
+  admission: 
+  rent_fee: 
+  begginer_wall: 
+  wall_num: MyString
+  varcahr: MyString
+  wall_height: 
+  weekly_problems: 
+  rules: MyText
+  frequency_of_change_holds: 
+  training_space_varchar: MyString
+  free_wifi: 
+  parking: MyText
+  problem_num: 
+  others: MyText
+
+two:
+  gym_name: 
+  place: MyText
+  station: 
+  access: MyText
+  open_time: 
+  admission: 
+  rent_fee: 
+  begginer_wall: 
+  wall_num: MyString
+  varcahr: MyString
+  wall_height: 
+  weekly_problems: 
+  rules: MyText
+  frequency_of_change_holds: 
+  training_space_varchar: MyString
+  free_wifi: 
+  parking: MyText
+  problem_num: 
+  others: MyText
