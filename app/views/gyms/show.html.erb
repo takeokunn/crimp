@@ -26,24 +26,175 @@
             <p>👍:54<!--gym.problem_num--></p>
         </div>
     </div>
-    
+    <!--
     <div class="row f_3_info border-bottom bg-light">
         <div class="col-3 text-center px-0 border-right">
-            <p class="">コスパ:4.3点<!--cost_par_performance.--></p>
-            <p>1位/<!--gym.length-->５０店中</p>
+            <p class=""></p>
+            <p></p>
         </div>
-        <div class="col-3 text-center px-0 border-right">
-            <p class="mb-0 quality_of_service">課題:4.3点<!--cost_par_performance.--></p>
-            <p>1位/<!--gym.length-->５０店中</p>
+
+    </div>
+    -->
+    <div>
+        <div class="row">
+            <div class="col-8">
+                <h1>詳細情報</h1>
+            </div>
+            <div class="col-4">
+                <p><%=link_to("編集する", "/edit_f_info/#{@gym.id}")%></p>
+            </div>
         </div>
-        <div class="col-3 text-center px-0 border-right">
-            <p class="mb-0">居心地:4.3点<!--cost_par_performance.--></p>
-            <p>1位/<!--gym.length-->５０店中</p>
+        <div class="row border-bottom border-top">
+            <div class="col-4 bg-light border-right">
+                <p>店舗名</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.gym_name %></p>
+            </div>
         </div>
-        <div class="col-3 text-center px-0">
-            <p class="mb-0">接客:4.3点<!--cost_par_performance.--></p>
-            <p>1位/<!--gym.length-->５０店中</p>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>住所</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.place %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>アクセス</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.access %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>料金</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.admission %></p>
+            </div>
+        </div>
+         <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>レンタル料金</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.rent_fee %></p>
+            </div>
+        </div>
+        
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>営業時間</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.open_time %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>初心者用ウォールの有無</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.begginer_wall %></p>
+            </div>
+        </div>
+    </div>   
+    <div>
+        <div class="row">
+            <div class="col-12">
+                <h1>詳細情報</h1>
+            </div>
+        </div>
+        <div class="row border-bottom border-top">
+            <div class="col-4 bg-light border-right">
+                <p>固定課題数</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.problem_num %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>壁の枚数</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.wall_num %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>壁の高さ</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.wall_height %></p>
+            </div>
+        </div>
+            <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>ウィークリー課題の有無について</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.weekly_problems %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>個別ルール</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.rules %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>トレーニング器具について</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.training_space %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>ホールド替えの周期</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.frequency_of_change_holds %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>物販</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.store %></p>
+            </div>
+        </div>
+        
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>free wifi</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.free_wifi %></p>
+            </div>
+        </div>
+        <div class="row border-bottom">
+            <div class="col-4 bg-light border-right">
+                <p>その他</p>
+            </div>
+            <div class="col-8">
+                <p><%=@gym.others %></p>
+            </div>
         </div>
         
     </div>
+
+
+
+
+
+
 </div>
