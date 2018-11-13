@@ -1,2 +1,12 @@
-<h1>GymList#top</h1>
-<p>Find me in app/views/gym_list/top.html.erb</p>
+<div class="container-fluid">
+      <div class="row">
+            <div class="col-12">
+                  <h1>ジム一覧</h1>
+            </div>
+            <div class="col-12">
+                  <% @gym.each do |gym| %>
+                  <%=link_to("#{gym.gym_name}", "gym/#{gym.id}")%>
+                  <%end%>
+            </div>
+      </div>
+</div>
