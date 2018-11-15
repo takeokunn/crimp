@@ -1,5 +1,5 @@
 class GymsController < ApplicationController
-      before_action :before_action, only: [:show, :edit_d_info, :edit_f_info, :update] 
+      before_action :before_action, only: [:show, :edit, :update] 
       def index
             @gym = Gym.all
       end
@@ -7,10 +7,7 @@ class GymsController < ApplicationController
       def show
       end
 
-      def edit_d_info 
-      end
-
-      def edit_f_info
+      def edit 
       end
 
       def update

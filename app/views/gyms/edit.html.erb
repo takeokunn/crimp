@@ -1,0 +1,10 @@
+<div class="container-fluid">
+      <div class="row">
+            <%= form_for @gym, html: {class: 'col-12 px-1'} do |f| %>
+                  <div class="row">
+                        <%= f.label :gym_name, {class: 'col-4'} %>
+                        <%= f.text_field :gym_name, {class: 'col-8 p-1'} %>
+                  </div>
+            <% end %>
+      </div>
+</div>
