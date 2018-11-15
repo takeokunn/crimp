@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :gyms
   
-  get "/gym/edit_f_info/:gym_id", to:"gyms#edit_f_info"
-  get "/gym/edit_d_info/:gym_id", to:"gyms#edit_d_info"
+  get "gyms/:id/edit_f_info", to:"gyms#edit_f_info"
+  get "gyms/:id/edit_d_info", to:"gyms#edit_d_info"
   
 end
