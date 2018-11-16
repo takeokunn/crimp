@@ -11,7 +11,8 @@ class GymsController < ApplicationController
       end
 
       def update
-            
+          @gym.update(params.require(:gym).permit(:gym_name, :place, :access))
+          redirect_to gyms_path
       end
 
       private
