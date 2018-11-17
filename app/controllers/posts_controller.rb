@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     @post = Post.create(params.require(:post).permit(:overall_caption))
     @post.gym_id = params[:gym_id]
     @post.user_id = session[:user_id]
+    @post.save
     redirect_to gym_path(params[:gym_id])
   end
 
