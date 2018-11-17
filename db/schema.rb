@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_122340) do
+ActiveRecord::Schema.define(version: 2018_11_17_132047) do
 
   create_table "gym_likes", force: :cascade do |t|
     t.bigint "user_id"
@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(version: 2018_11_11_122340) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "gym_name"
-    t.bigint "post_id"
     t.string "user_rank"
     t.text "problem_caption"
     t.text "overall_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gym_id"
   end
 
   create_table "users", force: :cascade do |t|

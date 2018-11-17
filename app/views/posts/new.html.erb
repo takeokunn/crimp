@@ -1,0 +1,11 @@
+<div class="container-fluid">
+      <div class="row">
+            <%=form_for @post, url: gym_posts_path, html: {class: 'col-12 px-1'} do |f| %>
+                  <div class="row">
+                        <div class="col-4"><p>口コミ</p></div>
+                        <%= f.text_field :overall_caption, {class: 'col-8 p-1'} %>
+                  </div>
+            <%= f.submit "口コミを送信する"%>
+            <% end %>
+      </div>
+</div>

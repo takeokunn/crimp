@@ -2,9 +2,11 @@ class GymsController < ApplicationController
       before_action :before_action, only: [:show, :edit, :update] 
       def index
             @gym = Gym.all
+            
       end
 
       def show
+            @posts = Post.where(gym_id: params[:id])
       end
 
       def edit 
