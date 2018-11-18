@@ -42,9 +42,10 @@
         <div class="col-4">
             <%= link_to("口コミを投稿する", new_gym_post_path(@gym) )%>
         </div>
-        <%= @posts.each do |post|%>
-            <div class="col-12">
-                <p><%= post.overall_caption %></p>
+        <% @posts.each do |post|%>
+            <div class="col-12 py-2 border-top border-bottom">
+                <%= post.overall_caption %>
+                <%= post.created_at %>
             </div>
         <% end %>
     </div>
