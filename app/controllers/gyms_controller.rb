@@ -7,6 +7,7 @@ class GymsController < ApplicationController
 
       def show
             @posts = Post.where(gym_id: params[:id])
+            
       end
 
       def edit 

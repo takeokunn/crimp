@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_132047) do
+ActiveRecord::Schema.define(version: 2018_11_19_153154) do
 
   create_table "gym_likes", force: :cascade do |t|
     t.bigint "user_id"
@@ -61,14 +61,16 @@ ActiveRecord::Schema.define(version: 2018_11_17_132047) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
     t.string "gym_name"
     t.string "user_rank"
     t.text "problem_caption"
     t.text "overall_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.integer "gym_id"
+    t.index ["gym_id"], name: "index_posts_on_gym_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,7 +81,9 @@ ActiveRecord::Schema.define(version: 2018_11_17_132047) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["post_id"], name: "index_users_on_post_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -45,7 +45,7 @@
         <% @posts.each do |post|%>
             <div class="col-12 py-2 border-top border-bottom">
                 <%= post.overall_caption %>
-                <%= post.created_at %>
+                <%= post.user.email%>
             </div>
         <% end %>
     </div>
