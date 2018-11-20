@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_153154) do
+ActiveRecord::Schema.define(version: 2018_11_20_104241) do
 
   create_table "gym_likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "gym_id"
+    t.integer "gym_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_gym_likes_on_gym_id"
+    t.index ["user_id"], name: "index_gym_likes_on_user_id"
   end
 
   create_table "gym_reviews", force: :cascade do |t|
@@ -49,13 +51,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_153154) do
     t.text "parking"
     t.string "problem_num"
     t.text "others"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "post_likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

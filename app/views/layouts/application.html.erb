@@ -12,11 +12,14 @@
 <div class="container-fluid">
 
     <div class="row">
+    <% if notice  %>
         <p class="notice col-12 m-0 p-0"><%= notice%></p>
+    <% end %>
+    <% if alert %>
         <p class="alert col-12 m-0 p-0 border-0"><%= alert %></p>
+    <% end %>
     </div>
-</div>
-
+</div
 
 <%= yield %>
 

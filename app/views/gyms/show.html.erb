@@ -23,7 +23,12 @@
             <p class="mb-0">固定課題数:96<!--gym.problem_num--></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
-            <p>👍:54<!--gym.problem_num--></p>
+            <%=link_to like_gym_path do %>
+                <i>👍</i>
+                <% if @gymLikes %>
+                    <%= @gymLikes.length %>
+                <% end %>
+            <% end %>
         </div>
     </div>
     <!--

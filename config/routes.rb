@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :gyms do
     resources :posts
+
+    member do
+      get 'like', to:"gyms#like", as: :like
+    end
   end
 
 end
