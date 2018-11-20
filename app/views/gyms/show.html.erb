@@ -51,6 +51,11 @@
             <div class="col-12 py-2 border-top border-bottom">
                 <%= post.overall_caption %>
                 <%= post.user.email%>
+                <%=link_to like_gym_post_path(id: post.id, gym_id: @gym.id) do %>
+                    <i>♡</i>
+                    
+                    <%= PostLike.where(post_id: post.id).length %>
+                <% end %>
             </div>
         <% end %>
     </div>

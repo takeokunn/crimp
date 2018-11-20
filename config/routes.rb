@@ -5,11 +5,17 @@ Rails.application.routes.draw do
   root "home#top"
 
   resources :gyms do
-    resources :posts
+    resources :posts do
+      member do
+        get "like", to:"post_likes#like", as: :like
+      end
+    end
 
     member do
       get 'like', to:"gyms#like", as: :like
     end
   end
+
+  
 
 end
