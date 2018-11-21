@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'bootstrap', '~> 4.1.1'
 gem 'bootsnap', require: false
+gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'listen'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

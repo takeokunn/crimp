@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
-
   before_action :before_action, only: [:new]
 
-  def new 
-  end
+  def new; end
 
   def create
     @post = Post.create(params.require(:post).permit(:overall_caption))
@@ -14,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def before_action
     @post = Post.new
     @gym = Gym.find(params[:gym_id])

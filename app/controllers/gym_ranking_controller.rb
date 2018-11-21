@@ -1,4 +1,3 @@
 class GymRankingController < ApplicationController
-  def top
-  end
+  def top; end
 end

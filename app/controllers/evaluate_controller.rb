@@ -1,4 +1,3 @@
 class EvaluateController < ApplicationController
-  def create
-  end
+  def create; end
 end
