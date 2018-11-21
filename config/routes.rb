@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   resources :gyms do
     resources :posts do
-      member do
-        get "like", to:"post_likes#like", as: :like
-      end
+      resource :post_likes, only: [:create, :destroy]
     end
 
     member do
