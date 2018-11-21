@@ -10,5 +10,4 @@ class SignFormController < ApplicationController
     @user.save
     redirect_to("/user_page/#{@user.id}")
   end
-  
 end
