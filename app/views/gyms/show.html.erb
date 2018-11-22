@@ -23,10 +23,17 @@
             <p class="mb-0">固定課題数:96<!--gym.problem_num--></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
-            <%=link_to like_gym_path do %>
-                <i>👍</i>
-                <% if @gymLikes %>
+            <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
+                 <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :delete do %>
+                    <i>👍</i>
                     <%= @gymLikes.length %>
+                <% end %>
+            <% else %>
+                <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :post do %>
+                    <i>👍</i>
+                    <% if @gymLikes %>
+                        <%= @gymLikes.length %>
+                    <% end %>
                 <% end %>
             <% end %>
         </div>
