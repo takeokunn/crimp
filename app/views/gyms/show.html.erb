@@ -10,10 +10,8 @@
             <p class="last-hold-change mb-0 text-center">次回のホールド替え</p>
             <p class="last-hold-change text-center">11/29</p>
         </div>
-        
     </div>
     <div class="row f_2_info border-top border-bottom border-white bg-light">
-        
         <div class="text-center col-5 pr-0 pt-1">
             <p class="mb-0 overall_score">総合評価:4.9点<!--gym.overall_score--></p>
             <p class="mb-0">1位/<!--gym.length-->５０店中</p>
@@ -24,7 +22,7 @@
         </div>
         <div class="col-2 text-center p-0 pt-2">
             <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
-                 <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :delete do %>
+                <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :delete do %>
                     <i>👍</i>
                     <%= @gymLikes.length %>
                 <% end %>
@@ -69,7 +67,6 @@
                         <%= PostLike.where(post_id: post.id).length %>
                     <% end %>
                 <% end %>
-                    
             </div>
         <% end %>
     </div>
@@ -115,7 +112,7 @@
                 <p><%=@gym.admission %></p>
             </div>
         </div>
-         <div class="row border-bottom">
+        <div class="row border-bottom">
             <div class="col-4 bg-light border-right">
                 <p>レンタル料金</p>
             </div>
@@ -123,7 +120,6 @@
                 <p><%=@gym.rent_fee %></p>
             </div>
         </div>
-        
         <div class="row border-bottom">
             <div class="col-4 bg-light border-right">
                 <p>営業時間</p>
@@ -140,7 +136,7 @@
                 <p><%=@gym.begginer_wall %></p>
             </div>
         </div>
-    </div>   
+    </div>
 
     <div>
         <div class="row">
@@ -212,7 +208,6 @@
                 <p><%=@gym.store %></p>
             </div>
         </div>
-        
         <div class="row border-bottom">
             <div class="col-4 bg-light border-right">
                 <p>free wifi</p>
@@ -229,12 +224,6 @@
                 <p><%=@gym.others %></p>
             </div>
         </div>
-        
     </div>
-
-
-
-
-
 
 </div>
