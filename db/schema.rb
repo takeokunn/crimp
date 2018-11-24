@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_23_161529) do
+ActiveRecord::Schema.define(version: 2018_11_24_132236) do
 
   create_table "gym_likes", force: :cascade do |t|
     t.integer "gym_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2018_11_23_161529) do
   end
 
   create_table "gym_reviews", force: :cascade do |t|
-    t.bigint "user_id"
     t.decimal "cost_par_fee"
     t.decimal "problems_quality"
     t.decimal "service"
@@ -30,6 +29,10 @@ ActiveRecord::Schema.define(version: 2018_11_23_161529) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "overall_score"
+    t.integer "user_id"
+    t.integer "gym_id"
+    t.index ["gym_id"], name: "index_gym_reviews_on_gym_id"
+    t.index ["user_id"], name: "index_gym_reviews_on_user_id"
   end
 
   create_table "gyms", force: :cascade do |t|

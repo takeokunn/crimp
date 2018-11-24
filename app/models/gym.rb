@@ -1,4 +1,5 @@
 class Gym < ApplicationRecord
-  has_many :posts
-  has_many :gym_likes
+  has_many :posts, dependent: :destroy
+  has_many :gym_likes, dependent: :destroy
+  has_many :gym_reviews, dependent: :destroy
 end

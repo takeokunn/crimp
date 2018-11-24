@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <%=form_for @gymReview, html: {class: 'col-12'}, url: gym_review_path(gym_id: params[:gym_id]) do |f| %>
+            <div class="row">
+                <%= f.label "課題のクオリティー", {class: 'col-4'} %>
+                <%= f.select :problems_quality, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], {class: 'col-8 p-1'} %>
+            </div>
+            <div class="row">
+                <%= f.label "コスパ", {class: 'col-4'} %>
+                <%= f.select :cost_par_fee, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], {class: 'col-8 p-1'} %>
+            </div>
+            <div class="row">
+                <%= f.label "居心地", {class: 'col-4'} %>
+                <%= f.select :comfortableness, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], {class: 'col-8 p-1'} %>
+            </div>
+            <div class="row">
+                <%= f.label "接客", {class: 'col-4'}%>
+                <%= f.select :service, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], {class: 'col-8 p-1'}%>
+            </div>
+            <%=f.submit "評価する"%>
+        <% end %>
+    </div>
+</div>

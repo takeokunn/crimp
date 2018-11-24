@@ -4,35 +4,60 @@
         <div class="col-8">
             <h3 class="gym-name"><span class="border-bottom"><%= @gym.gym_name%></span></h3>
             <p class="previous-hold-change mb-0 text-center">前回のホールド替え</p>
-            <p class="previous-hold-change mb-0 text-center">date of the last change</p>
+            <p class="previous-hold-change mb-0 text-center"><%=@gym.last_time_changing_holds%></p>
             <p class="last-hold-change mb-0 text-center">次回のホールド替え</p>
-            <p class="last-hold-change text-center">11/29</p>
+            <p class="last-hold-change text-center"><%=@gym.next_time_changing_holds%></p>
         </div>
         <div class="col-4 pl-0 pt-3">
         <%if HomeGym.find_by(user_id: current_user.id)%>
-            <%= link_to "ホームジムにする", gym_home_path(gym_id: @gym.id), method: :delete%>
+            <%= link_to "ホームジム登録を削除する", gym_home_path(gym_id: @gym.id), method: :delete%>
         <% else %>
             <%=link_to "ホームジムにする", gym_home_path(gym_id: @gym.id), method: :post%>
         <%end%>
         </div>
     </div>
     <div class="row f_2_info border-top border-bottom border-white bg-light">
-        <div class="text-center col-5 pr-0 pt-1">
-            <p class="mb-0 overall_score">総合評価:4.9点<!--gym.overall_score--></p>
-            <p class="mb-0">1位/<!--gym.length-->５０店中</p>
+        <div class="text-center col-2 pr-0 pt-1">
+            <p class="mb-0 overall_score">総合評価:<%= @overall_score %>点<!--gym.overall_score--></p>
+            <p class="mb-0">
+                1位/<%=@gyms.length%>店舗中
+            </p>
+        </div>
+        <div class="text-center col-2 pr-0 pt-1">
+            <p class="mb-0 overall_score">課題の質:<%= @problems_quality %>点<!--gym.overall_score--></p>
+            <p class="mb-0">1位/<%= @gyms.length %>店舗中</p>
+        </div>
+        <div class="text-center col-2 pr-0 pt-1">
+            <p class="mb-0 overall_score">コスパ:<%= @cost_par_fee %>点<!--gym.overall_score--></p>
+            <p class="mb-0">1位/<%= @gyms.length %>店舗中</p>
+        </div>
+        <div class="text-center col-2 pr-0 pt-1">
+            <p class="mb-0 overall_score">居心地:<%= @comfortableness %>点<!--gym.overall_score--></p>
+            <p class="mb-0">1位/<%= @gyms.length %>店舗中</p>
+        </div>
+        <div class="text-center col-2 pr-0 pt-1">
+            <p class="mb-0 overall_score">接客:<%= @service %>点<!--gym.overall_score--></p>
+            <p class="mb-0">1位/<%= @gyms.length %>店舗中</p>
+        </div>
+        <div class="text-center col-2 pr-0 pt-1">
+            <% if GymReview.find_by(gym_id: @gym.id, user_id: current_user.id)%>
+                <%=link_to "このジムの評価を変更する", edit_gym_review_path(gym_id: @gym.id)%>
+            <% else%>
+                <%=link_to "このジムを評価する", new_gym_review_path(gym_id: @gym.id)%>
+            <% end %>
         </div>
         <div class="col-5 text-center pl-0 pt-1">
             <p class="mb-0">ホームジム人数:<%= @homeGym.length %>人</p>
-            <p class="mb-0">固定課題数:<%= @gym.problem_num %><!--gym.problem_num--></p>
+            <p class="mb-0">固定課題数:<%= @gym.problem_num %></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
             <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
-                <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :delete do %>
+                <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :delete do %>
                     <i>👍</i>
                     <%= @gymLikes.length %>
                 <% end %>
             <% else %>
-                <%=link_to gym_gym_likes_path(gym_id: @gym.id), method: :post do %>
+                <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :post do %>
                     <i>👍</i>
                     <% if @gymLikes %>
                         <%= @gymLikes.length %>
@@ -41,15 +66,6 @@
             <% end %>
         </div>
     </div>
-    <!--
-    <div class="row f_3_info border-bottom bg-light">
-        <div class="col-3 text-center px-0 border-right">
-            <p class=""></p>
-            <p></p>
-        </div>
-
-    </div>
-    -->
     <div class="row">
         <div class="col-8">
             <h2>口コミを投稿する</h2>
