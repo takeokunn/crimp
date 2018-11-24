@@ -3,12 +3,17 @@
     <div class="row top-back">
         <div class="col-8">
             <h3 class="gym-name"><span class="border-bottom"><%= @gym.gym_name%></span></h3>
-        </div>
-        <div class="col-4 pl-0 pt-3">
             <p class="previous-hold-change mb-0 text-center">前回のホールド替え</p>
             <p class="previous-hold-change mb-0 text-center">date of the last change</p>
             <p class="last-hold-change mb-0 text-center">次回のホールド替え</p>
             <p class="last-hold-change text-center">11/29</p>
+        </div>
+        <div class="col-4 pl-0 pt-3">
+        <%if HomeGym.find_by(user_id: current_user.id)%>
+            <%= link_to "ホームジムにする", gym_home_path(gym_id: @gym.id), method: :delete%>
+        <% else %>
+            <%=link_to "ホームジムにする", gym_home_path(gym_id: @gym.id), method: :post%>
+        <%end%>
         </div>
     </div>
     <div class="row f_2_info border-top border-bottom border-white bg-light">
@@ -17,8 +22,8 @@
             <p class="mb-0">1位/<!--gym.length-->５０店中</p>
         </div>
         <div class="col-5 text-center pl-0 pt-1">
-            <p class="mb-0">ホームジム人数:33<!--home_gym.num.-->人</p>
-            <p class="mb-0">固定課題数:96<!--gym.problem_num--></p>
+            <p class="mb-0">ホームジム人数:<%= @homeGym.length %>人</p>
+            <p class="mb-0">固定課題数:<%= @gym.problem_num %><!--gym.problem_num--></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
             <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
@@ -157,15 +162,7 @@
                 <p>壁の枚数</p>
             </div>
             <div class="col-8">
-                <p><%=@gym.wall_num %></p>
-            </div>
-        </div>
-        <div class="row border-bottom">
-            <div class="col-4 bg-light border-right">
-                <p>壁の高さ</p>
-            </div>
-            <div class="col-8">
-                <p><%=@gym.wall_height %></p>
+                <p><%=@gym.about_wall %></p>
             </div>
         </div>
             <div class="row border-bottom">

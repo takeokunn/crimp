@@ -6,6 +6,7 @@ class GymsController < ApplicationController
 
   def show
     @posts = Post.where(gym_id: params[:id])
+    @homeGym = HomeGym.where(gym_id: params[:id])
     @gymLikes = GymLike.where(gym_id: params[:id])
   end
 
