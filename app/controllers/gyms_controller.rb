@@ -9,6 +9,9 @@ class GymsController < ApplicationController
     @homeGym = HomeGym.where(gym_id: params[:id])
     @gymLikes = GymLike.where(gym_id: params[:id])
     overall_gym_review
+    if @overall_gym_review
+      calculate_gym_rank
+    end
   end
 
   def edit; end
@@ -24,10 +27,10 @@ class GymsController < ApplicationController
     @gym = Gym.find(params[:id])
     @gymReviews = GymReview.where(gym_id: params[:id])
     @gyms = Gym.all
+    @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
   end
 
   def overall_gym_review
-    @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
     @overall_score = 0
     @problems_quality = 0
     @cost_par_fee = 0
@@ -40,5 +43,15 @@ class GymsController < ApplicationController
           @comfortableness = @overall_gym_review.comfortableness
           @service = @overall_gym_review.service
     end
+  end
+
+  def calculate_gym_rank
+    @overall_gym_reviews = OverallGymReview.all
+  end
+
+  def calculate_overall_score_rank
+    s = @overall_gym_reviews.select(:overall_score).order(:overall_score)
+    i = 0
+    @k = i
   end
 end
