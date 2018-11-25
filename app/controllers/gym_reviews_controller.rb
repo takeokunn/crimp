@@ -9,6 +9,8 @@ class GymReviewsController < ApplicationController
         @gymReview.user_id = current_user.id
         @gymReview.gym_id = params[:gym_id]
         @gymReview.save
+        @rank_gymaReview = GymReview.where(gym_id: params[:gym_id])
+        
         redirect_to gym_path(params[:gym_id])
     end
     def destroy
