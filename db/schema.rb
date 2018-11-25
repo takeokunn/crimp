@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_044126) do
+ActiveRecord::Schema.define(version: 2018_11_25_080107) do
 
   create_table "gym_likes", force: :cascade do |t|
     t.integer "gym_id"
@@ -19,18 +19,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_044126) do
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_gym_likes_on_gym_id"
     t.index ["user_id"], name: "index_gym_likes_on_user_id"
-  end
-
-  create_table "gym_rankings", force: :cascade do |t|
-    t.integer "gym_id"
-    t.decimal "overall_score"
-    t.decimal "problems_quality"
-    t.decimal "cost_par_fee"
-    t.decimal "comfortableness"
-    t.decimal "service"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gym_id"], name: "index_gym_rankings_on_gym_id"
   end
 
   create_table "gym_reviews", force: :cascade do |t|
@@ -80,6 +68,18 @@ ActiveRecord::Schema.define(version: 2018_11_25_044126) do
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_home_gyms_on_gym_id"
     t.index ["user_id"], name: "index_home_gyms_on_user_id"
+  end
+
+  create_table "overall_gym_reviews", force: :cascade do |t|
+    t.integer "gym_id"
+    t.decimal "overall_score"
+    t.decimal "problems_quality"
+    t.decimal "cost_par_fee"
+    t.decimal "comfortableness"
+    t.decimal "service"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_overall_gym_reviews_on_gym_id"
   end
 
   create_table "post_likes", force: :cascade do |t|

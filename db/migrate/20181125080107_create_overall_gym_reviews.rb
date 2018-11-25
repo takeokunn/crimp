@@ -1,6 +1,6 @@
-class CreateGymRankings < ActiveRecord::Migration[5.2]
+class CreateOverallGymReviews < ActiveRecord::Migration[5.2]
   def change
-    create_table :gym_rankings do |t|
+    create_table :overall_gym_reviews do |t|
       t.references :gym, foreign_key: true
       t.decimal :overall_score
       t.decimal :problems_quality

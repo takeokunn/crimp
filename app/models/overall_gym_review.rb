@@ -1,0 +1,2 @@
+class OverallGymReview < ApplicationRecord
+end
