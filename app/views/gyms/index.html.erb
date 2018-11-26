@@ -5,7 +5,7 @@
             </div>
             <div class="col-12">
                   <% @gym.each do |gym| %>
-                  <%=link_to("#{gym.gym_name}", "gyms/#{gym.id}")%>
+                  <p><%=link_to("#{gym.gym_name}", "gyms/#{gym.id}")%></p>
                   <%end%>
             </div>
       </div>

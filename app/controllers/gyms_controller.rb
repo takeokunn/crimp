@@ -47,11 +47,16 @@ class GymsController < ApplicationController
 
   def calculate_gym_rank
     @overall_gym_reviews = OverallGymReview.all
+    calculate_overall_score_rank
   end
 
   def calculate_overall_score_rank
-    s = @overall_gym_reviews.select(:overall_score).order(:overall_score)
-    i = 0
-    @k = i
+    @i = 1
+    @overall_gym_review_of_score = @overall_gym_reviews.order(overall_score: :desc)
+    if @overall_gym_reviews.length >= 2
+      while @overall_gym_review_of_score.pluck(:overall_score)[@i - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score
+          @i += 1
+      end
+    end
   end
 end
