@@ -49,6 +49,9 @@ class GymsController < ApplicationController
     @overall_gym_reviews = OverallGymReview.all
     calculate_overall_score_rank
     calculate_problems_quality_rank
+    calculate_cost_par_fee_rank
+    calculate_comfortableness_rank
+    calculate_service_rank
   end
 
   def calculate_overall_score_rank
