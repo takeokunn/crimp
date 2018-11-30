@@ -21,7 +21,7 @@ class GymsController < ApplicationController
   private
 
   def before_action
-    @gym = Gym.find(params[:id])
+		@gym = Gym.find(params[:id])
     @gymReviews = GymReview.where(gym_id: params[:id])
     @gyms = Gym.all
     @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
