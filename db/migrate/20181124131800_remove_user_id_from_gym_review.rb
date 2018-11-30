@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveUserIdFromGymReview < ActiveRecord::Migration[5.2]
   def change
     remove_column :gym_reviews, :user_id, :bigint
