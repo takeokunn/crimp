@@ -46,7 +46,6 @@ class GymReviewsController < ApplicationController
         @cost_par_fee = @cost_par_fee / @gymReviews.length
         @comfortableness = @comfortableness / @gymReviews.length
         @service = @service / @gymReviews.length
-
         if OverallGymReview.find_by(gym_id: params[:gym_id])
             OverallGymReview.find_by(gym_id: params[:gym_id]).update(overall_score: @overall_score, problems_quality: @problems_quality, cost_par_fee: @cost_par_fee, comfortableness: @comfortableness, service:@service)
         else

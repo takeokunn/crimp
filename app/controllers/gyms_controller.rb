@@ -3,7 +3,6 @@ class GymsController < ApplicationController
   def index
     @gym = Gym.all
   end
-
   def show
     @posts = Post.where(gym_id: params[:id])
     @homeGym = HomeGym.where(gym_id: params[:id])
@@ -13,9 +12,7 @@ class GymsController < ApplicationController
       calculate_gym_rank
     end
   end
-
   def edit; end
-
   def update
     @gym.update(params.require(:gym).permit(:gym_name, :place, :access))
     redirect_to gyms_path
@@ -29,7 +26,6 @@ class GymsController < ApplicationController
     @gyms = Gym.all
     @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
   end
-
   def overall_gym_review
     @overall_score = 0
     @problems_quality = 0
@@ -37,14 +33,13 @@ class GymsController < ApplicationController
     @comfortableness = 0
     @service = 0
     if @overall_gym_review
-          @overall_score = @overall_gym_review.overall_score
-          @problems_quality = @overall_gym_review.problems_quality
-          @cost_par_fee = @overall_gym_review.cost_par_fee
-          @comfortableness = @overall_gym_review.comfortableness
-          @service = @overall_gym_review.service
+      @overall_score = @overall_gym_review.overall_score
+      @problems_quality = @overall_gym_review.problems_quality
+      @cost_par_fee = @overall_gym_review.cost_par_fee
+      @comfortableness = @overall_gym_review.comfortableness
+      @service = @overall_gym_review.service
     end
   end
-
   def calculate_gym_rank
     @overall_gym_reviews = OverallGymReview.all
     calculate_overall_score_rank
@@ -53,7 +48,6 @@ class GymsController < ApplicationController
     calculate_comfortableness_rank
     calculate_service_rank
   end
-
   def calculate_overall_score_rank
     @overall_score_rank = 1
     @overall_gym_reviews_of_score = @overall_gym_reviews.order(overall_score: :desc)
