@@ -57,50 +57,30 @@ class GymsController < ApplicationController
   def calculate_overall_score_rank
     @overall_score_rank = 1
     @overall_gym_reviews_of_score = @overall_gym_reviews.order(overall_score: :desc)
-    if @overall_gym_reviews.length >= 2
-      while @overall_gym_reviews_of_score.pluck(:overall_score)[@overall_score_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score
-        @overall_score_rank += 1
-      end
-    end
+    @overall_score_rank += 1 while @overall_gym_reviews_of_score.pluck(:overall_score)[@overall_score_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score if @overall_gym_reviews.length >= 2
   end
 
   def calculate_problems_quality_rank
     @overall_problems_quality_rank = 1
     @overall_gym_reviews_of_problems_quality = @overall_gym_reviews.order(problems_quality: :desc)
-    if @overall_gym_reviews.length >= 2
-      while @overall_gym_reviews_of_problems_quality.pluck(:problems_quality)[@overall_problems_quality_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).problems_quality
-        @overall_problems_quality_rank += 1
-      end
-    end
+    @overall_problems_quality_rank += 1 while @overall_gym_reviews_of_problems_quality.pluck(:problems_quality)[@overall_problems_quality_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).problems_quality if @overall_gym_reviews.length >= 2
   end
 
   def calculate_cost_par_fee_rank
     @overall_cost_par_fee_rank = 1
     @overall_gym_reviews_of_cost_par_fee = @overall_gym_reviews.order(cost_par_fee: :desc)
-    if @overall_gym_reviews.length >= 2
-      while @overall_gym_reviews_of_cost_par_fee.pluck(:cost_par_fee)[@overall_cost_par_fee_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).cost_par_fee
-        @overall_problems_quality_rank += 1
-      end
-    end
+    @overall_problems_quality_rank += 1 while @overall_gym_reviews_of_cost_par_fee.pluck(:cost_par_fee)[@overall_cost_par_fee_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).cost_par_fee if @overall_gym_reviews.length >= 2
   end
 
   def calculate_comfortableness_rank
     @overall_comfortableness_rank = 1
     @overall_gym_reviews_of_comfortableness = @overall_gym_reviews.order(comfortableness: :desc)
-    if @overall_gym_reviews.length >= 2
-      while @overall_gym_reviews_of_comfortableness.pluck(:comfortableness)[@overall_comfortableness_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).comfortableness
-        @overall_comfortableness_rank += 1
-      end
-    end
+    @overall_comfortableness_rank += 1 while @overall_gym_reviews_of_comfortableness.pluck(:comfortableness)[@overall_comfortableness_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).comfortableness if @overall_gym_reviews.length >= 2
   end
 
   def calculate_service_rank
     @overall_service_rank = 1
     @overall_gym_reviews_of_service = @overall_gym_reviews.order(service: :desc)
-    if @overall_gym_reviews.length >= 2
-      while @overall_gym_reviews_of_service.pluck(:service)[@overall_service_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).service
-        @overall_service_rank += 1
-      end
-    end
+    @overall_service_rank += 1 while @overall_gym_reviews_of_service.pluck(:service)[@overall_service_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).service if @overall_gym_reviews.length >= 2
   end
 end

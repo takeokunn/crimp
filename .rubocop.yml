@@ -1,0 +1,25 @@
+Rails:
+  Enabled: true
+AllCops:
+  # Rubyのバージョンを指定
+  TargetRubyVersion: 2.5.3
+  # 除外するファイル
+  Exclude:
+    - vendor/bundle/**/*
+    - bin/*
+    - db/**/*
+    - Gemfile
+# Missing magic comment # frozen_string_literal: true. を無視
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Missing top-level class documentation comment. を無視
+Style/Documentation:
+  Enabled: false
+
+# Line is too long を無視
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
