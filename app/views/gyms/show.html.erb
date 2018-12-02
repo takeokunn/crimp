@@ -47,7 +47,7 @@
             <% end %>
         </div>
         <div class="col-5 text-center pl-0 pt-1">
-            <p class="mb-0">ホームジム人数:<%= @homeGym.length %>人</p>
+            <p class="mb-0">ホームジム人数:<%= @home_gym.length %>人</p>
             <p class="mb-0">固定課題数:<%= @gym.problem_num %></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
@@ -59,7 +59,7 @@
             <% else %>
                 <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :post do %>
                     <i>👍</i>
-                    <% if @gymLikes %>
+                    <% if @gym_likes %>
                         <%= @gymLikes.length %>
                     <% end %>
                 <% end %>
