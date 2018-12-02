@@ -1,51 +1,39 @@
 class GymReviewsController < ApplicationController
     def new
-        @gymReview = GymReview.new(gym_id: params[:gym_id], user_id: current_user.id)
+        @gym_review = GymReview.new(gym_id: params[:gym_id], user_id: current_user.id)
     end
     def create
-        @gymReview = GymReview.create(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
-        @gymReview.overall_score = (@gymReview.problems_quality + @gymReview.cost_par_fee + @gymReview.comfortableness + @gymReview.service) / 4
-        @gymReview.gym_id = params[:gym_id]
-        @gymReview.user_id = current_user.id
-        @gymReview.gym_id = params[:gym_id]
-        @gymReview.save
+        @gym_review = GymReview.create(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
+        @gym_review.overall_score = (@gymReview.problems_quality + @gymReview.cost_par_fee + @gymReview.comfortableness + @gymReview.service) / 4
+        @gym_review.user_id = current_user.id
+        @gym_review.gym_id = params[:gym_id]
+        @gym_review.save
         calculate_gym_ranking
         redirect_to gym_path(params[:gym_id])
     end
     def destroy
     end
     def edit
-        @gymReview = GymReview.find_by(gym_id: params[:gym_id], user_id: current_user.id)
+        @gym_review = GymReview.find_by(gym_id: params[:gym_id], user_id: current_user.id)
     end
     def update
-        @gymReview = GymReview.find_by(gym_id: params[:gym_id], user_id: current_user.id)
-        @gymReview.update(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
-        @gymReview.overall_score = (@gymReview.problems_quality + @gymReview.cost_par_fee + @gymReview.comfortableness + @gymReview.service) / 4
-        @gymReview.save
+        @gym_review = GymReview.find_by(gym_id: params[:gym_id], user_id: current_user.id)
+        @gym_review.update(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
+        @gym_review.overall_score = (@gym_review.problems_quality + @gym_review.cost_par_fee + @gym_review.comfortableness + @gym_review.service) / 4
+        @gym_review.save
         calculate_gym_ranking
         redirect_to gym_path(params[:gym_id])
     end
 
     private
     def calculate_gym_ranking
-        @gymReviews = GymReview.where(gym_id: params[:gym_id])
-        @overall_score = 0
-        @problems_quality = 0
-        @cost_par_fee = 0
-        @comfortableness = 0
-        @service = 0
-        @gymReviews.each do |gymReview|
-            @overall_score += gymReview.overall_score
-            @problems_quality = gymReview.problems_quality
-            @cost_par_fee = gymReview.cost_par_fee
-            @comfortableness = gymReview.comfortableness
-            @service = gymReview.service
-        end
-        @overall_score = @overall_score / @gymReviews.length
-        @problems_quality = @problems_quality / @gymReviews.length
-        @cost_par_fee = @cost_par_fee / @gymReviews.length
-        @comfortableness = @comfortableness / @gymReviews.length
-        @service = @service / @gymReviews.length
+        @gym_reviews = GymReview.where(gym_id: params[:gym_id])
+        @overall_score = @gym_reviews.average(:overall_score)
+        @problems_quality = @gym_reviews.average(:problems_quality)
+        @cost_par_fee = @gym_reviews.average(:cost_par_fee)
+        @comfortableness = @gym_reviews.average(:comfortableness)
+		@service = @service / @gym_reviews.average(:service)
+
         if OverallGymReview.find_by(gym_id: params[:gym_id])
             OverallGymReview.find_by(gym_id: params[:gym_id]).update(overall_score: @overall_score, problems_quality: @problems_quality, cost_par_fee: @cost_par_fee, comfortableness: @comfortableness, service:@service)
         else
