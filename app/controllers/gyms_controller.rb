@@ -36,11 +36,11 @@ class GymsController < ApplicationController
     @cost_par_fee = 0
     @comfortableness = 0
     @service = 0
-      @overall_score = @overall_gym_review.overall_score
-      @problems_quality = @overall_gym_review.problems_quality
-      @cost_par_fee = @overall_gym_review.cost_par_fee
-      @comfortableness = @overall_gym_review.comfortableness
-      @service = @overall_gym_review.service
+    @overall_score = @overall_gym_review.overall_score
+    @problems_quality = @overall_gym_review.problems_quality
+    @cost_par_fee = @overall_gym_review.cost_par_fee
+    @comfortableness = @overall_gym_review.comfortableness
+    @service = @overall_gym_review.service
   end
 
   def calculate_gym_rank
@@ -54,8 +54,7 @@ class GymsController < ApplicationController
 
   def calculate_overall_score_rank
     @overall_score_rank = 1
-    @overall_gym_reviews_of_score = @overall_gym_reviews.order(overall_score: :desc)
-    @overall_score_rank += 1 while @overall_gym_reviews_of_score.pluck(:overall_score)[@overall_score_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score if @overall_gym_reviews.length >= 2
+    @overall_score_rank += 1 while @overall_gym_reviews.order(overall_score: :desc).pluck(:overall_score)[@overall_score_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score if @overall_gym_reviews.length >= 2
   end
 
   def calculate_problems_quality_rank
