@@ -3,13 +3,12 @@
 class GymsController < ApplicationController
   before_action :before_action, only: %i[show edit update]
   def index
-    @gym = Gym.all
   end
 
   def show
-    @posts = Post.where(gym_id: params[:id])
-    @home_gym = HomeGym.where(gym_id: params[:id])
-    @gym_likes = GymLike.where(gym_id: params[:id])
+    @posts = Post.fit
+    @home_gym = HomeGym.fit
+    @gym_likes = GymLike.fit
     overall_gym_review
     calculate_gym_rank if @overall_gym_review
   end
@@ -25,7 +24,7 @@ class GymsController < ApplicationController
 
   def before_action
     @gym = Gym.find(params[:id])
-    @gym_reviews = GymReview.where(gym_id: params[:id])
+    @gym_reviews = GymReview.fit_request
     @gyms = Gym.all
     @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
   end
@@ -50,9 +49,9 @@ class GymsController < ApplicationController
     calculate_cost_par_fee_rank
     calculate_comfortableness_rank
     calculate_service_rank
-  end
+	end
 
-  def calculate_overall_score_rank
+	def calculate_overall_score_rank
     @overall_score_rank = 1
     @overall_score_rank += 1 while @overall_gym_reviews.order(overall_score: :desc).pluck(:overall_score)[@overall_score_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).overall_score if @overall_gym_reviews.length >= 2
   end
@@ -79,5 +78,6 @@ class GymsController < ApplicationController
     @overall_service_rank = 1
     @overall_gym_reviews_of_service = @overall_gym_reviews.order(service: :desc)
     @overall_service_rank += 1 while @overall_gym_reviews_of_service.pluck(:service)[@overall_service_rank - 1] > OverallGymReview.find_by(gym_id: params[:id]).service if @overall_gym_reviews.length >= 2
-  end
+	end
+
 end
