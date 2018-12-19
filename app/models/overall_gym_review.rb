@@ -3,6 +3,8 @@
 class OverallGymReview < ApplicationRecord
 	belongs_to :gym
 
+	#indexをOverallGymReviewの全てのカラムに追加することが必要なのではないか？
+	#そもそもOverallGymReviewとGymモデルを分けたことはただしかったのか？
 
 	def calculate_overall_score_rank
 		overall_scores = OverallGymReview.all.order(overall_score: :desc).pluck(:overall_score)
@@ -38,7 +40,5 @@ class OverallGymReview < ApplicationRecord
 		service_rank += 1 while overall_servicies[service_rank - 1] > self.service
 		return service_rank
 	end
-
-
 
 end
