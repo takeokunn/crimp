@@ -31,15 +31,18 @@ class GymsController < ApplicationController
 	end
 
 	def overall_gym_review
-		@overall_score = 0
-		@problems_quality = 0
-		@cost_par_fee = 0
-		@comfortableness = 0
-		@service = 0
-		@overall_score = @overall_gym_review.overall_score
-		@problems_quality = @overall_gym_review.problems_quality
-		@cost_par_fee = @overall_gym_review.cost_par_fee
-		@comfortableness = @overall_gym_review.comfortableness
-		@service = @overall_gym_review.service
+		if @overall_gym_review == nil
+			@overall_score = 0
+			@problems_quality = 0
+			@cost_par_fee = 0
+			@comfortableness = 0
+			@service = 0
+		else
+			@overall_score = @overall_gym_review.overall_score
+			@problems_quality = @overall_gym_review.problems_quality
+			@cost_par_fee = @overall_gym_review.cost_par_fee
+			@comfortableness = @overall_gym_review.comfortableness
+			@service = @overall_gym_review.service
+		end
 	end
 end

@@ -4,7 +4,7 @@ class OverallGymReview < ApplicationRecord
 	belongs_to :gym
 
 	#indexをOverallGymReviewの全てのカラムに追加することが必要なのではないか？
-	#そもそもOverallGymReviewとGymモデルを分けたことはただしかったのか？
+	#そもそもOverallGymReviewとGymモデルを分けたことはよかったのか。
 
 	def calculate_overall_score_rank
 		overall_scores = OverallGymReview.all.order(overall_score: :desc).pluck(:overall_score)
