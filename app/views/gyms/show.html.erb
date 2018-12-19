@@ -54,13 +54,13 @@
             <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
                 <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :delete do %>
                     <i>👍</i>
-                    <%= @gymLikes.length %>
+                    <%= @gym_likes.length %>
                 <% end %>
             <% else %>
                 <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :post do %>
                     <i>👍</i>
                     <% if @gym_likes %>
-                        <%= @gymLikes.length %>
+                        <%= @gym_likes.length %>
                     <% end %>
                 <% end %>
             <% end %>

@@ -4,7 +4,7 @@
                   <h1>ジム一覧</h1>
             </div>
             <div class="col-12">
-                  <% @gym.each do |gym| %>
+                  <% @gyms.each do |gym| %>
                   <p><%=link_to("#{gym.gym_name}", "gyms/#{gym.id}")%></p>
                   <%end%>
             </div>
