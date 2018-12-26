@@ -9,6 +9,17 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+		# Add more helper methods to be used by all tests here...
+
+		def log_in( user )
+			if integration_test?
+				#use warden helper
+				login_as(user, :scope => :user)
+			else #controller_test, model_test
+				#use devise helper
+				sign_in(user)
+			end
+		end
+
   end
 end

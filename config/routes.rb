@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resource :home_gym, only: %i[create destroy new], as: :home
     resource :gym_like, only: %i[create destroy]
     resource :gym_review, except: %i[index show], as: :review
-    resource :caluculate_gym_ranking
     resources :posts do
       resource :post_likes, only: %i[create destroy]
     end
