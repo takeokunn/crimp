@@ -10,8 +10,8 @@ class MakePostTest < ActionDispatch::IntegrationTest
 		@gym = gyms( :one )
 	end
 
-	#to do: 特定のじむIDが必要
 	test "make post" do
 		get new_gym_post_path(@gym)
+		assert_template 'posts/new'
 	end
 end
