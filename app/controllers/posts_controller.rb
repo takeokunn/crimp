@@ -6,11 +6,13 @@ class PostsController < ApplicationController
   def new; end
 
   def create
-    @post = Post.create(params.require(:post).permit(:overall_caption))
+    @post = current_user.post.build(params.require(:post).permit(:overall_caption))
     @post.gym_id = params[:gym_id]
-    @post.user_id = current_user.id
-    @post.save
-    redirect_to gym_path(params[:gym_id])
+    if @post.save!
+			redirect_to gym_path(params[:gym_id])
+		else
+			redirect_to root_path
+		end
   end
 
   private

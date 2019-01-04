@@ -14,12 +14,15 @@ class GymsController < ApplicationController
     overall_gym_review
   end
 
-  def edit; end
+	def edit
+		@gym = Gym.find(params[:id])
+	end
 
   def update
     @gym.update(params.require(:gym).permit(:gym_name, :place, :access))
     redirect_to gyms_path
-  end
+	end
+
 
   private
 

@@ -8,10 +8,11 @@ class PostTest < ActiveSupport::TestCase
 #review: そもそもログインしてなくても投稿ができてしまう？
 #explanation: 投稿する一連の流れはintegration_testに回す
 	def setup
-		@post = Post.new(overall_caption: "楽しかった")
+		@post = Post.new(overall_caption: "楽しかった", gym_id: 1, user_id: 1)
 	end
 
 
+#question: postがvalidにならない。解決　→usr_id作ったらうまくいった。
     test "valid post" do
 		assert @post.valid?
 	end

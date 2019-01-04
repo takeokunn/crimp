@@ -91,8 +91,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "gym_name"
-    t.string "user_rank"
     t.text "problem_caption"
     t.text "overall_caption"
     t.datetime "created_at", null: false
