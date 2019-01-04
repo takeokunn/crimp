@@ -15,7 +15,6 @@ class GymsController < ApplicationController
   end
 
 	def edit
-		@gym = Gym.find(params[:id])
 	end
 
   def update

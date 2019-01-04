@@ -13,7 +13,7 @@ class GymLikesControllerTest < ActionDispatch::IntegrationTest
 
 	test "create gym_likes" do
 		#sign_in @user
-		post gym_gym_like_path(@gym), params: { user_id: @user.id}
+		patch gym_gym_like_path(@gym), params: { user_id: @user.id}
 		assert_redirected_to gym_path(@gym)
 	end
 end

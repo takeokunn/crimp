@@ -9,11 +9,14 @@ class GymEditTest < ActionDispatch::IntegrationTest
 			@gym = gyms(:one)
 		end
 
-		test "successful edit" do
+		test "unsuccessful edit" do
 			sign_in users(:john)
-			get edit_gym_path(@gym)
+			get edit_gym_path, params: { id: @gym.id }
 			assert_template "gyms/edit"
-			patch gym_path(@gym), params: { gym: {gym_name: "test", place: "shibuya", station: "shibuya", access: "駅から五分"} }
+			patch gym_path, params: { id: @gym.id, gym: {gym_name: "test", place: "shibuya", station: "shibuya", access: "駅から五分"} }
+
 		end
+
+
 	end
 end
