@@ -9,6 +9,7 @@ class GymEditTest < ActionDispatch::IntegrationTest
 			@gym = gyms(:one)
 		end
 
+		#question: ArgumentError: wrong number of arguments (given 1, expected 2)のエラーが消えない。
 		test "unsuccessful edit" do
 			sign_in users(:john)
 			get edit_gym_path, params: { id: @gym.id }

@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
 
   create_table "overall_gym_reviews", force: :cascade do |t|
     t.integer "gym_id"
-    t.decimal "overall_score"
-    t.decimal "problems_quality"
-    t.decimal "cost_par_fee"
-    t.decimal "comfortableness"
-    t.decimal "service"
+    t.decimal "overall_score", default: "0.0"
+    t.decimal "problems_quality", default: "0.0"
+    t.decimal "cost_par_fee", default: "0.0"
+    t.decimal "comfortableness", default: "0.0"
+    t.decimal "service", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_overall_gym_reviews_on_gym_id"

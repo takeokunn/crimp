@@ -1,15 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  cost_par_fee: 9.99
-  problems_quality: 9.99
-  service: 9.99
-  comfortableness: 9.99
-
-two:
-  user_id: 
-  cost_par_fee: 9.99
-  problems_quality: 9.99
-  service: 9.99
-  comfortableness: 9.99
+  gym_id: 1
+  cost_par_fee: 3
+  problems_quality: 3
+  service: 3
+  comfortableness: 3
