@@ -1,17 +1,16 @@
 require 'test_helper'
 
 class MakePostTest < ActionDispatch::IntegrationTest
-  include Warden::Test::Helpers
+	Devise::Test::IntegrationHelpers
 
   def setup
-    Warden.test_mode!
     @user = users( :john )
 		@gym = gyms( :one )
 	end
 
 	#memo ActionView::Template::Error: undefined method `calculate_overall_score_rank' for nil:NilClassが最後のgym_pathへのリダイレクトで起こる。原因は、そのジムの@overall_gym_reviewが、ジムの作成時に一つも存在しないから
 	test "make post" do
-		login_as(@user, :scope => :user)
+		login_as users(:john)
 		get new_gym_post_path(@gym)
 		assert_template 'posts/new'
 		assert_no_difference 'Post.count' do

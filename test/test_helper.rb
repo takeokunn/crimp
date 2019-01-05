@@ -14,4 +14,6 @@ class ActiveSupport::TestCase
 			"user[email]"    => user.email,
 			"user[password]" => user.password
 	end
+	include ApplicationHelper
+	include Devise::Test::IntegrationHelpers
 end

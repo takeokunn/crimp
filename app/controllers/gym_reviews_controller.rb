@@ -4,7 +4,7 @@ class GymReviewsController < ApplicationController
   end
 
 	def create
-		@gym_review = GymReview.create(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
+		@gym_review = GymReview.new(params.require(:gym_review).permit(:problems_quality, :cost_par_fee, :comfortableness, :service))
     if @gym_review.valid?
 			@gym_review.overall_score = (@gymReview.problems_quality + @gymReview.cost_par_fee + @gymReview.comfortableness + @gymReview.service) / 4
 			@gym_review.user_id = current_user.id
