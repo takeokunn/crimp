@@ -6,16 +6,5 @@ one:
   place: "MyText"
   station: "shibuya"
   access: "MyText"
-  open_time:
-  admission:
-  rent_fee:
-  begginer_wall:
-  weekly_problems:
-  rules: MyText
-  frequency_of_change_holds:
-  free_wifi:
-  parking: MyText
-  problem_num:
-  others: MyText
 
 

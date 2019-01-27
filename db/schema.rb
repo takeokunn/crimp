@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_080107) do
+ActiveRecord::Schema.define(version: 2019_01_27_113618) do
 
   create_table "gym_likes", force: :cascade do |t|
     t.integer "gym_id"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
     t.decimal "problems_quality"
     t.decimal "service"
     t.decimal "comfortableness"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.decimal "overall_score"
     t.integer "user_id"
     t.integer "gym_id"
@@ -53,11 +51,16 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
     t.text "parking"
     t.string "problem_num"
     t.text "others"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "last_time_changing_holds"
     t.string "next_time_changing_holds"
     t.text "about_wall"
+    t.decimal "overall_score", default: "0.0"
+    t.decimal "problems_quality", default: "0.0"
+    t.decimal "cost_par_fee", default: "0.0"
+    t.decimal "comfortableness", default: "0.0"
+    t.decimal "service", default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "home_gyms", force: :cascade do |t|
@@ -67,18 +70,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
     t.datetime "updated_at", null: false
     t.index ["gym_id"], name: "index_home_gyms_on_gym_id"
     t.index ["user_id"], name: "index_home_gyms_on_user_id"
-  end
-
-  create_table "overall_gym_reviews", force: :cascade do |t|
-    t.integer "gym_id"
-    t.decimal "overall_score", default: "0.0"
-    t.decimal "problems_quality", default: "0.0"
-    t.decimal "cost_par_fee", default: "0.0"
-    t.decimal "comfortableness", default: "0.0"
-    t.decimal "service", default: "0.0"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gym_id"], name: "index_overall_gym_reviews_on_gym_id"
   end
 
   create_table "post_likes", force: :cascade do |t|
@@ -93,11 +84,11 @@ ActiveRecord::Schema.define(version: 2018_11_25_080107) do
   create_table "posts", force: :cascade do |t|
     t.text "problem_caption"
     t.text "overall_caption"
+    t.text "aircaption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "gym_id"
-    t.text "aircaption"
     t.index ["gym_id"], name: "index_posts_on_gym_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

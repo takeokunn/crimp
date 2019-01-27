@@ -7,13 +7,13 @@ class PostLikesController < ApplicationController
 		else
 			redirect_to root_path
 		end
-  end
+	end
 
-  def destroy
+	def destroy
     if PostLike.find_by(user_id: current_user.id, post_id: params[:post_id]).destroy
 			redirect_back(fallback_location: gym_path(params[:gym_id]))
 		else
 			redirect_to root_path
 		end
-  end
+	end
 end

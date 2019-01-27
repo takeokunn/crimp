@@ -7,3 +7,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+	Gym.create(gym_name: 'noborock', place: '渋谷', station:'渋谷駅', access: '渋谷駅徒歩５ふん')

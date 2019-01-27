@@ -11,9 +11,7 @@ class CreateGyms < ActiveRecord::Migration[5.0]
       t.string :admission
       t.string :rent_fee
       t.string :begginer_wall
-      t.string :wall_num
       t.string :store
-      t.string :wall_height
       t.string :weekly_problems
       t.text :rules
       t.string :frequency_of_change_holds
@@ -21,8 +19,16 @@ class CreateGyms < ActiveRecord::Migration[5.0]
       t.string :free_wifi
       t.text :parking
       t.string :problem_num
-      t.text :others
+			t.text :others
+			t.string :last_time_changing_holds
+			t.string :next_time_changing_holds
+			t.text :about_wall
 
+      t.decimal :overall_score, default: 0
+      t.decimal :problems_quality, default: 0
+      t.decimal :cost_par_fee, default: 0
+      t.decimal :comfortableness, default: 0
+      t.decimal :service, default: 0
       t.timestamps
     end
   end

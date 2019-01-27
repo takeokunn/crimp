@@ -18,26 +18,26 @@
     </div>
     <div class="row f_2_info border-top border-bottom border-white bg-light">
         <div class="text-center col-2 pr-0 pt-1">
-            <p class="mb-0 overall_score">総合評価:<%= @overall_score %>点<!--gym.overall_score--></p>
+            <p class="mb-0 overall_score">総合評価:<%= @gym.overall_score %>点<!--gym.overall_score--></p>
             <p class="mb-0">
-                <%= @overall_gym_review.calculate_overall_score_rank %>位/<%=@gyms.length%>店舗中
+                <%= @gym.calculate_overall_score_rank %>位/<%=@gyms.length%>店舗中
             </p>
         </div>
         <div class="text-center col-2 pr-0 pt-1">
-            <p class="mb-0 overall_score">課題の質:<%= @problems_quality %>点<!--gym.overall_score--></p>
-            <p class="mb-0"><%= @overall_gym_review.calculate_problems_quality_rank %>位/<%= @gyms.length %>店舗中</p>
+            <p class="mb-0 overall_score">課題の質:<%= @gym.problems_quality %>点<!--gym.overall_score--></p>
+            <p class="mb-0"><%= @gym.calculate_problems_quality_rank %>位/<%= @gyms.length %>店舗中</p>
         </div>
         <div class="text-center col-2 pr-0 pt-1">
-            <p class="mb-0 overall_score">コスパ:<%= @cost_par_fee %>点<!--gym.overall_score--></p>
-            <p class="mb-0"><%= @overall_gym_review.calculate_cost_par_fee_rank %>位/<%= @gyms.length %>店舗中</p>
+            <p class="mb-0 overall_score">コスパ:<%= @gym.cost_par_fee %>点<!--gym.overall_score--></p>
+            <p class="mb-0"><%= @gym.calculate_cost_par_fee_rank %>位/<%= @gyms.length %>店舗中</p>
         </div>
         <div class="text-center col-2 pr-0 pt-1">
-            <p class="mb-0 overall_score">居心地:<%= @comfortableness %>点<!--gym.overall_score--></p>
-            <p class="mb-0"><%= @overall_gym_review.calculate_comfortableness_rank %>位/<%= @gyms.length %>店舗中</p>
+            <p class="mb-0 overall_score">居心地:<%= @gym.comfortableness %>点<!--gym.overall_score--></p>
+            <p class="mb-0"><%= @gym.calculate_comfortableness_rank %>位/<%= @gyms.length %>店舗中</p>
         </div>
         <div class="text-center col-2 pr-0 pt-1">
-            <p class="mb-0 overall_score">接客:<%= @service %>点<!--gym.overall_score--></p>
-            <p class="mb-0"><%= @overall_gym_review.calculate_service_rank %>位/<%= @gyms.length %>店舗中</p>
+            <p class="mb-0 overall_score">接客:<%= @gym.service %>点<!--gym.overall_score--></p>
+            <p class="mb-0"><%= @gym.calculate_service_rank %>位/<%= @gyms.length %>店舗中</p>
         </div>
         <div class="text-center col-2 pr-0 pt-1">
             <% if GymReview.find_by(gym_id: @gym.id, user_id: current_user.id)%>
@@ -52,12 +52,12 @@
         </div>
         <div class="col-2 text-center p-0 pt-2">
             <% if GymLike.find_by(user_id: current_user.id, gym_id: @gym.id)%>
-                <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :delete do %>
+                <%=link_to gym_gym_like_path(@gym), method: :delete do %>
                     <i>👍</i>
                     <%= @gym_likes.length %>
                 <% end %>
             <% else %>
-                <%=link_to gym_gym_like_path(gym_id: @gym.id), method: :post do %>
+                <%=link_to gym_gym_like_path(@gym), method: :post do %>
                     <i>👍</i>
                     <% if @gym_likes %>
                         <%= @gym_likes.length %>

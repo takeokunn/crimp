@@ -11,15 +11,14 @@ class GymsController < ApplicationController
     @posts = Post.where(gym_id: params[:id])
     @home_gym = HomeGym.where(gym_id: params[:id])
     @gym_likes = GymLike.where(gym_id: params[:id])
-    overall_gym_review
   end
 
 	def edit
 	end
 
   def update
-    @gym.update(params.require(:gym).permit(:gym_name, :place, :access))
-    redirect_to gyms_path
+    @gym.update_attributes(params.require(:gym).permit(:gym_name, :place, :access, :station))
+    redirect_to gym_path(@gym)
 	end
 
 
@@ -28,11 +27,10 @@ class GymsController < ApplicationController
   def before_action
     @gyms = Gym.all
     @gym = Gym.find(params[:id])
-    @gym_reviews = GymReview.where(gym_id: params[:id])
-    @overall_gym_review = OverallGymReview.find_by(gym_id: params[:id])
+    @gym_reviews |= GymReview.where(gym_id: params[:id])
   end
 
-  def overall_gym_review
+	def overall_gym_review
     if @overall_gym_review.nil?
       @overall_score = 0
       @problems_quality = 0
@@ -46,5 +44,6 @@ class GymsController < ApplicationController
       @comfortableness = @overall_gym_review.comfortableness
       @service = @overall_gym_review.service
     end
-  end
+	end
+
 end
