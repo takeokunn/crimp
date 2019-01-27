@@ -63,24 +63,6 @@ ActiveRecord::Schema.define(version: 2019_01_27_113618) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "home_gyms", force: :cascade do |t|
-    t.integer "gym_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gym_id"], name: "index_home_gyms_on_gym_id"
-    t.index ["user_id"], name: "index_home_gyms_on_user_id"
-  end
-
-  create_table "post_likes", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_likes_on_post_id"
-    t.index ["user_id"], name: "index_post_likes_on_user_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.text "problem_caption"
     t.text "overall_caption"

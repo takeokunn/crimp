@@ -9,7 +9,6 @@ class GymsController < ApplicationController
 
   def show
     @posts = Post.where(gym_id: params[:id])
-    @home_gym = HomeGym.where(gym_id: params[:id])
     @gym_likes = GymLike.where(gym_id: params[:id])
   end
 

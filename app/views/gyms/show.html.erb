@@ -8,13 +8,6 @@
             <p class="last-hold-change mb-0 text-center">次回のホールド替え</p>
             <p class="last-hold-change text-center"><%=@gym.next_time_changing_holds%></p>
         </div>
-        <div class="col-4 pl-0 pt-3">
-        <%if HomeGym.find_by(user_id: current_user.id)%>
-            <%= link_to "ホームジム登録を削除する", gym_home_path(gym_id: @gym.id), method: :delete%>
-        <% else %>
-            <%=link_to "ホームジムにする", gym_home_path(gym_id: @gym.id), method: :post%>
-        <%end%>
-        </div>
     </div>
     <div class="row f_2_info border-top border-bottom border-white bg-light">
         <div class="text-center col-2 pr-0 pt-1">
@@ -47,7 +40,7 @@
             <% end %>
         </div>
         <div class="col-5 text-center pl-0 pt-1">
-            <p class="mb-0">ホームジム人数:<%= @home_gym.length %>人</p>
+            <p class="mb-0">ホームジム人数:<%=  %>人</p>
             <p class="mb-0">固定課題数:<%= @gym.problem_num %></p>
         </div>
         <div class="col-2 text-center p-0 pt-2">
@@ -77,17 +70,6 @@
             <div class="col-12 py-2 border-top border-bottom">
                 <%= post.overall_caption %>
                 <%= post.user.email%>
-                <% if PostLike.find_by(user_id: current_user.id, post_id: post.id) %>
-                    <%=link_to gym_post_post_likes_path(post_id: post.id, gym_id: @gym.id), :method => :delete do %>
-                        <i>♡</i>
-                        <%= PostLike.where(post_id: post.id).length %>
-                    <% end %>
-                <% else %>
-                    <%=link_to gym_post_post_likes_path(post_id: post.id, gym_id: @gym.id), :method => :post do %>
-                        <i>♡</i>
-                        <%= PostLike.where(post_id: post.id).length %>
-                    <% end %>
-                <% end %>
             </div>
         <% end %>
     </div>
